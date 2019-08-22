@@ -38,6 +38,7 @@ dependencies {
     implementation(group = "io.vertx", name = "vertx-rx-java2")
     implementation(group = "org.apache.commons", name = "commons-lang3")
     implementation(group = "com.google.guava", name = "guava")
+    implementation(group = "commons-io", name = "commons-io")
 
     testImplementation(group = "org.mockito", name = "mockito-core")
     testImplementation(group = "org.mockito", name = "mockito-junit-jupiter")
@@ -47,7 +48,7 @@ dependencies {
 
 tasks {
     named<RatTask>("rat") {
-        excludes.addAll("*.yml", "*.md", "**/*.md", "**/build/*", "**/out/*", "**/generated/*", "**/*.adoc", "**/*.json")
+        excludes.addAll("*.yml", "*.md", "**/*.md", "**/build/*", "**/out/*", "**/generated/*", "**/*.adoc", "**/*.json", "**/debug/*")
     }
     getByName("build").dependsOn("rat")
 }
