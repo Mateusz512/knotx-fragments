@@ -78,7 +78,8 @@ class InMemoryCacheActionFactoryTest {
         result -> {
           // then
           testContext.verify(() -> {
-            assertTrue(result.result().getActionLog().containsKey("do_action"));
+            assertTrue(result.result().getActionLog().containsKey("cached_key"));
+            System.out.println(result.result().getActionLog());
             assertTrue(result.succeeded());
           });
           testContext.completeNow();

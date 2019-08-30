@@ -24,9 +24,9 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
-public class JsonFragmentEventsConsumer implements FragmentEventsConsumer {
+public class JsonDebug implements FragmentEventsConsumer {
   private static final Logger LOGGER = LoggerFactory
-      .getLogger(JsonFragmentEventsConsumer.class);
+      .getLogger(JsonDebug.class);
 
   @Override
   public void accept(List<FragmentEvent> fragmentEvents) {

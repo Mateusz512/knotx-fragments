@@ -30,12 +30,12 @@ import io.knotx.fragments.api.Fragment;
 import io.knotx.fragments.engine.FragmentEvent;
 import io.vertx.core.json.JsonObject;
 
-class JsonFragmentEventsConsumerTest {
+class JsonDebugTest {
   @Test
   @DisplayName("Expect Json fragment body with debug data")
   void expectJsonFragmentBodyWithDebugData() {
     // given
-    JsonFragmentEventsConsumer tested = new JsonFragmentEventsConsumer();
+    JsonDebug tested = new JsonDebug();
 
     FragmentEvent fragmentEvent = Mockito.mock(FragmentEvent.class);
     String body = "{}";
@@ -60,7 +60,7 @@ class JsonFragmentEventsConsumerTest {
   @DisplayName("Expect body not changed for non json fragment type")
   void expectBodyNotChangedForNonJsonFragment() {
     // given
-    JsonFragmentEventsConsumer tested = new JsonFragmentEventsConsumer();
+    JsonDebug tested = new JsonDebug();
 
     FragmentEvent fragmentEvent = Mockito.mock(FragmentEvent.class);
     String body = "{}";

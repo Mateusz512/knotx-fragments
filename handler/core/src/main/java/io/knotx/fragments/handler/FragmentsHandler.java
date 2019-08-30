@@ -64,7 +64,7 @@ public class FragmentsHandler implements Handler<RoutingContext> {
     taskBuilder = new TaskBuilder(options.getTaskKey(), options.getTasks(), proxyProvider);
     engine = new FragmentsEngine(vertx);
     requestContextEngine = new DefaultRequestContextEngine(getClass().getSimpleName());
-    fragmentEventsConsumerProvider = new FragmentEventsConsumerProvider();
+    fragmentEventsConsumerProvider = new FragmentEventsConsumerProvider(options.getEnabledConsumers());
   }
 
   @Override
@@ -86,11 +86,12 @@ public class FragmentsHandler implements Handler<RoutingContext> {
   }
 
   private void addAdditionalDataToFragments(ClientRequest clientRequest, List<FragmentEvent> fragmentEvents){
-    List<FragmentEventsConsumer> consumers = fragmentEventsConsumerProvider.provide(getConsumers(clientRequest));
+    List<FragmentEventsConsumer> consumers = fragmentEventsConsumerProvider.provide(
+        getRequestedConsumers(clientRequest));
     consumers.forEach(consumer -> consumer.accept(fragmentEvents));
   }
 
-  private List<String> getConsumers(ClientRequest clientRequest) {
+  private List<String> getRequestedConsumers(ClientRequest clientRequest) {
     return clientRequest.getParams().getAll("consumers");
   }
 

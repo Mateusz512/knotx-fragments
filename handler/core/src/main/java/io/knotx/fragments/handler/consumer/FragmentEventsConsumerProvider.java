@@ -17,16 +17,19 @@ package io.knotx.fragments.handler.consumer;
 
 import static java.util.stream.Collectors.toList;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.ServiceLoader;
+import java.util.Set;
 import java.util.stream.StreamSupport;
 
 public class FragmentEventsConsumerProvider {
 
   private final List<FragmentEventsConsumerFactory> factories;
 
-  public FragmentEventsConsumerProvider() {
+  public FragmentEventsConsumerProvider(Set<String> enabledConsumers) {
     this.factories = StreamSupport.stream(loadFactories().spliterator(), false)
+        .filter(factory -> hasName(factory, enabledConsumers))
         .collect(toList());
   }
 
@@ -42,7 +45,7 @@ public class FragmentEventsConsumerProvider {
   }
 
 
-  private boolean hasName(FragmentEventsConsumerFactory factory, List<String> names){
+  private boolean hasName(FragmentEventsConsumerFactory factory, Collection<String> names){
     return names.stream().anyMatch((name -> name.equals(factory.getName())));
   }
 

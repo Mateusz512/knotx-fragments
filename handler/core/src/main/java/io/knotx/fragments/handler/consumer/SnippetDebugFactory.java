@@ -23,24 +23,24 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 
-public class SnippetFragmentEventsConsumerFactory implements FragmentEventsConsumerFactory {
+public class SnippetDebugFactory implements FragmentEventsConsumerFactory {
 
   private final String debugCss;
   private final String debugJs;
 
-  public SnippetFragmentEventsConsumerFactory() {
+  public SnippetDebugFactory() {
     this.debugCss = loadResourceToString("debug/debug.css");
     this.debugJs = loadResourceToString("debug/debug.js");
   }
 
   @Override
   public String getName() {
-    return "snippet";
+    return "snippetDebug";
   }
 
   @Override
   public FragmentEventsConsumer create() {
-    return new SnippetFragmentEventsConsumer(debugCss, debugJs);
+    return new SnippetDebug(debugCss, debugJs);
   }
 
   private String loadResourceToString(String path) {

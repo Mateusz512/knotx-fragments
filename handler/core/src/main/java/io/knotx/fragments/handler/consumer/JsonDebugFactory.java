@@ -15,15 +15,15 @@
  */
 package io.knotx.fragments.handler.consumer;
 
-public class JsonFragmentEventsConsumerFactory implements FragmentEventsConsumerFactory {
+public class JsonDebugFactory implements FragmentEventsConsumerFactory {
 
   @Override
   public String getName() {
-    return "json";
+    return "jsonDebug";
   }
 
   @Override
   public FragmentEventsConsumer create() {
-    return new JsonFragmentEventsConsumer();
+    return new JsonDebug();
   }
 }

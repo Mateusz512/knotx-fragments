@@ -19,6 +19,9 @@ import static io.knotx.fragments.handler.api.actionlog.ActionLogMode.ERROR;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+
+import com.google.common.collect.Sets;
 
 import io.knotx.fragments.handler.action.ActionOptions;
 import io.knotx.fragments.handler.api.actionlog.ActionLogMode;
@@ -38,6 +41,8 @@ public class FragmentsHandlerOptions {
 
   private ActionLogMode actionLogMode;
 
+  private Set<String> enabledConsumers;
+
   public FragmentsHandlerOptions(Map<String, NodeOptions> tasks) {
     init();
     this.tasks = tasks;
@@ -50,7 +55,8 @@ public class FragmentsHandlerOptions {
 
   private void init() {
     this.taskKey = DEFAULT_TASK_KEY;
-    actionLogMode = ERROR;
+    this.actionLogMode = ERROR;
+    this.enabledConsumers = Sets.newHashSet();
   }
 
   public JsonObject toJson() {
@@ -101,6 +107,16 @@ public class FragmentsHandlerOptions {
 
   public ActionLogMode getActionLogMode() {
     return actionLogMode;
+  }
+
+
+  public Set<String> getEnabledConsumers() {
+    return enabledConsumers;
+  }
+
+  public FragmentsHandlerOptions setEnabledConsumers(Set<String> enabledConsumers) {
+    this.enabledConsumers = enabledConsumers;
+    return this;
   }
 
   @Override

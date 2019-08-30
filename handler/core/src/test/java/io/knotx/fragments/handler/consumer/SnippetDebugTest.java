@@ -31,13 +31,13 @@ import io.knotx.fragments.api.Fragment;
 import io.knotx.fragments.engine.FragmentEvent;
 import io.vertx.core.json.JsonObject;
 
-class SnippetFragmentEventsConsumerTest {
+class SnippetDebugTest {
 
   @Test
   @DisplayName("Expect snippet fragment body is wrapped by fragmentId")
   void expectSnippetFragmentBodyWrappedByFragmentId() {
     // given
-    SnippetFragmentEventsConsumer tested = new SnippetFragmentEventsConsumer("debugCss", "debugJs");
+    SnippetDebug tested = new SnippetDebug("debugCss", "debugJs");
 
     FragmentEvent fragmentEvent = Mockito.mock(FragmentEvent.class);
     String body = "body";
@@ -63,7 +63,7 @@ class SnippetFragmentEventsConsumerTest {
     String debugCss = "debugCss";
     String debugJs = "debugJs";
 
-    SnippetFragmentEventsConsumer tested = new SnippetFragmentEventsConsumer(debugCss, debugJs);
+    SnippetDebug tested = new SnippetDebug(debugCss, debugJs);
 
     FragmentEvent fragmentEvent = Mockito.mock(FragmentEvent.class);
     JsonObject logData = new JsonObject();

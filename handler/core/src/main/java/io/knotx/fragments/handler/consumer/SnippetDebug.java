@@ -23,13 +23,13 @@ import io.knotx.fragments.api.Fragment;
 import io.knotx.fragments.engine.FragmentEvent;
 import io.vertx.core.json.JsonObject;
 
-public class SnippetFragmentEventsConsumer implements FragmentEventsConsumer {
+public class SnippetDebug implements FragmentEventsConsumer {
   private static final String BODY_SECTION_END = "</body>";
 
   private final String debugCss;
   private final String debugJs;
 
-  SnippetFragmentEventsConsumer(String debugCss, String debugJs) {
+  SnippetDebug(String debugCss, String debugJs) {
     this.debugCss = debugCss;
     this.debugJs = debugJs;
   }
